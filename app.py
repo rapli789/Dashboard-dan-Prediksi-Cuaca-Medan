@@ -100,7 +100,11 @@ C = dict(LIGHT)  # palet aktif, diperbarui di main()
 
 # aset: CSS dan template HTML
 def read_asset(name: str) -> str:
-    return (ASSETS_DIR / name).read_text(encoding="utf-8")
+    path = find_file(Path(name).name, "assets")
+    if not path.exists():
+        raise FileNotFoundError(
+            f"{name} tidak ada. BASE_DIR={BASE_DIR}, isi folder: {sorted(os.listdir(BASE_DIR))}")
+    return path.read_text(encoding="utf-8")
 
 
 def squash(text: str) -> str:
@@ -116,6 +120,21 @@ def load_templates() -> dict[str, str]:
         blocks[m.group(1)] = "".join(line.strip()
                                      for line in body.splitlines())
     return blocks
+
+
+BASE_DIR = Path(__file__).resolve().parent
+
+def find_file(name: str, *folders: str) -> Path:
+    standard = BASE_DIR.joinpath(*folders, name)
+    if standard.exists():
+        return standard
+    skip = {".venv", "venv", ".git", "__pycache__"}
+    for root, dirs, files in os.walk(BASE_DIR):
+        dirs[:] = [d for d in dirs if d not in skip]
+        for f in files:
+            if f.lower() == name.lower():
+                return Path(root) / f
+    return standard
 
 
 TEMPLATES = load_templates()
