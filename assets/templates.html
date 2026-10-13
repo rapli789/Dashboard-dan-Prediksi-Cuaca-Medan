@@ -1,0 +1,55 @@
+<!-- Template HTML. Tiap blok diawali penanda @nama. Placeholder ditulis dengan kurung kurawal ganda. -->
+
+<!-- @brand -->
+<div class="brand">
+    <div class="brand-mark"></div>
+    <div>
+        <div class="brand-name">Cuaca Medan</div>
+        <div class="brand-sub">Pantau dan prediksi hujan</div>
+    </div>
+</div>
+
+<!-- @page_header -->
+<p class="page-title">{{title}}</p>
+<p class="page-sub">{{sub}}</p>
+
+<!-- @panel_header -->
+<p class="panel-title">{{title}}</p>
+<p class="panel-sub">{{sub}}</p>
+
+<!-- @hero -->
+<div class="hero">
+    <p class="cond">{{cond}}</p>
+    <p class="tip">{{tip}}</p>
+</div>
+
+<!-- @result -->
+<div class="result-info">
+    <span class="pill {{tone}}">{{pill}}</span>
+    <p class="status">{{status}}</p>
+    <p class="desc">{{desc}}</p>
+    <div class="kv"><span>Peluang hujan</span><span class="rain">{{prob}}%</span></div>
+    <div class="kv"><span>Peluang tidak hujan</span><span class="dry">{{prob_inv}}%</span></div>
+    <div class="kv"><span>Ambang keputusan</span><span>50%</span></div>
+</div>
+
+<!-- @legend -->
+<div class="legend">
+    <span class="up"><i class="dot"></i>Mendorong hujan</span>
+    <span class="down"><i class="dot"></i>Menekan hujan</span>
+    <span class="neutral"><i class="dot"></i>Netral</span>
+</div>
+
+<!-- @finding -->
+<div class="finding {{direction}}">
+    <i class="dot"></i>
+    <div>
+        <div class="tag">{{tag}}</div>
+        <div class="body">{{text}}</div>
+    </div>
+</div>
+
+<!-- @summary -->
+<div class="summary"><b>Kesimpulan:</b> gabungan faktor di atas membuat model memperkirakan besok <b>{{verdict}}</b>
+    dengan peluang hujan {{prob}}%.
+</div>

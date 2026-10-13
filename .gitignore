@@ -1,0 +1,20 @@
+# lingkungan virtual
+.venv/
+venv/
+env/
+
+# cache python
+__pycache__/
+*.pyc
+
+# rahasia, jangan pernah di-commit
+.env
+.streamlit/secrets.toml
+
+# file bawaan editor dan sistem
+.vscode/
+.DS_Store
+Thumbs.db
+
+# opsional: checkpoint notebook
+.ipynb_checkpoints/

@@ -1,0 +1,1133 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap');
+
+/* latar langit: siang cerah dan malam berbulan (dipilih lewat --scene dari app.py) */
+:root {
+    --scene-light:
+        radial-gradient(circle 200px at 93% 15%, rgba(255, 241, 201, .95), rgba(255, 241, 201, 0) 72%),
+        radial-gradient(circle 36px at 93% 15%, rgba(255, 248, 224, .98), rgba(255, 248, 224, 0) 100%),
+        radial-gradient(ellipse 420px 70px at 14% 12%, rgba(255, 255, 255, .75), rgba(255, 255, 255, 0) 70%),
+        radial-gradient(ellipse 340px 56px at 58% 22%, rgba(255, 255, 255, .6), rgba(255, 255, 255, 0) 70%),
+        radial-gradient(ellipse 300px 50px at 30% 40%, rgba(255, 255, 255, .45), rgba(255, 255, 255, 0) 70%),
+        linear-gradient(180deg, #BFDDF3 0%, #DCEBF7 42%, #F6F1E3 100%);
+    --scene-dark:
+        radial-gradient(circle 26px at 93% 15%, #F7F0D2 0, #F3EAC6 92%, rgba(243, 234, 198, 0) 100%),
+        radial-gradient(circle 220px at 93% 15%, rgba(243, 234, 198, .20), rgba(243, 234, 198, 0) 72%),
+        radial-gradient(circle 1.3px at 8% 10%, rgba(255, 255, 255, .8), rgba(255, 255, 255, 0) 100%),
+        radial-gradient(circle 1px at 15% 28%, rgba(255, 255, 255, .6), rgba(255, 255, 255, 0) 100%),
+        radial-gradient(circle 1.5px at 22% 6%, rgba(255, 255, 255, .9), rgba(255, 255, 255, 0) 100%),
+        radial-gradient(circle 1px at 31% 19%, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0) 100%),
+        radial-gradient(circle 1.2px at 39% 33%, rgba(255, 255, 255, .7), rgba(255, 255, 255, 0) 100%),
+        radial-gradient(circle 1px at 47% 8%, rgba(255, 255, 255, .6), rgba(255, 255, 255, 0) 100%),
+        radial-gradient(circle 1.5px at 55% 24%, rgba(255, 255, 255, .8), rgba(255, 255, 255, 0) 100%),
+        radial-gradient(circle 1px at 63% 12%, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0) 100%),
+        radial-gradient(circle 1.2px at 71% 30%, rgba(255, 255, 255, .7), rgba(255, 255, 255, 0) 100%),
+        radial-gradient(circle 1px at 78% 7%, rgba(255, 255, 255, .6), rgba(255, 255, 255, 0) 100%),
+        radial-gradient(circle 1.3px at 84% 36%, rgba(255, 255, 255, .6), rgba(255, 255, 255, 0) 100%),
+        radial-gradient(circle 1px at 12% 46%, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0) 100%),
+        radial-gradient(circle 1.2px at 27% 58%, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0) 100%),
+        radial-gradient(circle 1px at 68% 52%, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0) 100%),
+        radial-gradient(circle 1.2px at 90% 48%, rgba(255, 255, 255, .6), rgba(255, 255, 255, 0) 100%),
+        linear-gradient(180deg, #0B1530 0%, #15234A 55%, #1E2E5A 100%);
+}
+
+/* dasar halaman */
+html,
+body,
+.stApp,
+[class*="css"] {
+    font-family: 'Nunito Sans', sans-serif;
+    font-variant-numeric: tabular-nums;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+.stApp {
+    background: var(--scene);
+    background-attachment: fixed;
+    color: var(--text);
+    color-scheme: var(--color-scheme);
+}
+
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"],
+[data-testid="stBottom"],
+[data-testid="stBottom"]>div {
+    background: transparent !important;
+}
+
+#MainMenu,
+footer,
+[data-testid="stToolbar"],
+[data-testid="stDecoration"] {
+    display: none;
+}
+
+header[data-testid="stHeader"] {
+    background: transparent;
+}
+
+.block-container {
+    padding: 2.2rem 2.4rem 3rem;
+    max-width: 1240px;
+}
+
+h1,
+h2,
+h3,
+p,
+label,
+li {
+    color: var(--text);
+}
+
+[data-testid="stCaptionContainer"] {
+    color: var(--muted);
+}
+
+/* header: logo dan nama aplikasi */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    margin: 0;
+    padding: .2rem 0;
+}
+
+.brand-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-mark::after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bg);
+}
+
+.brand-name {
+    font-weight: 800;
+    font-size: 1.1rem;
+    line-height: 1.1;
+}
+
+.brand-sub {
+    color: var(--muted);
+    font-size: .8rem;
+}
+
+/* navbar: garis pemisah di bawah menu */
+.nav-line {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: .6rem 0 1.4rem;
+}
+
+/* judul halaman */
+.page-title {
+    font-size: 1.9rem;
+    font-weight: 800;
+    letter-spacing: -0.01rem;
+    margin: 0;
+}
+
+.page-sub {
+    color: var(--muted);
+    margin: .25rem 0 1.4rem;
+    font-size: .98rem;
+}
+
+/* panel dan kartu metrik */
+div[data-testid="stVerticalBlockBorderWrapper"] {
+    background: var(--panel);
+    border: 1px solid var(--border) !important;
+    border-radius: 16px;
+    padding: .5rem .6rem;
+    backdrop-filter: blur(8px);
+}
+
+div[data-testid="stMetric"] {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1rem 1.2rem;
+    backdrop-filter: blur(8px);
+}
+
+div[data-testid="stMetricLabel"] p {
+    color: var(--muted);
+    font-weight: 600;
+    font-size: .88rem;
+}
+
+div[data-testid="stMetricValue"] {
+    color: var(--text);
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+div[data-testid="stMetricDelta"] {
+    color: var(--muted) !important;
+    font-size: .82rem;
+}
+
+div[data-testid="stMetricDelta"] svg {
+    display: none;
+}
+
+.panel-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin: 0;
+}
+
+.panel-sub {
+    color: var(--muted);
+    font-size: .85rem;
+    margin: .1rem 0 .7rem;
+}
+
+/* kartu cuaca hari ini */
+.hero {
+    background: var(--side);
+    border-radius: 18px;
+    padding: 1.6rem 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.hero .cond {
+    font-size: 1.9rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin: 0 0 .3rem;
+}
+
+.hero .tip {
+    color: var(--muted);
+    margin: 0;
+    max-width: 62ch;
+    line-height: 1.55;
+}
+
+/* hasil prediksi */
+.result-info {
+    padding-top: .6rem;
+}
+
+.pill {
+    display: inline-block;
+    padding: .22rem .8rem;
+    border-radius: 999px;
+    font-size: .8rem;
+    font-weight: 700;
+    margin-bottom: .6rem;
+}
+
+.pill.rain {
+    color: var(--rain);
+    background: color-mix(in srgb, var(--rain) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--rain) 40%, transparent);
+}
+
+.pill.dry {
+    color: var(--dry);
+    background: color-mix(in srgb, var(--dry) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--dry) 40%, transparent);
+}
+
+.status {
+    font-size: 1.65rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0 0 .4rem;
+}
+
+.desc {
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.kv {
+    display: flex;
+    justify-content: space-between;
+    padding: .6rem 0;
+    border-top: 1px solid var(--border);
+    font-size: .93rem;
+}
+
+.kv span:first-child {
+    color: var(--muted);
+}
+
+.kv span:last-child {
+    font-weight: 700;
+}
+
+.kv .rain {
+    color: var(--rain);
+}
+
+.kv .dry {
+    color: var(--dry);
+}
+
+/* alasan prediksi (legenda, temuan, kesimpulan) */
+.dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    display: inline-block;
+    flex: none;
+    background: var(--neutral);
+}
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.1rem;
+    color: var(--muted);
+    font-size: .8rem;
+    margin-bottom: .4rem;
+}
+
+.legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+}
+
+.finding {
+    display: flex;
+    gap: .8rem;
+    padding: .8rem .2rem;
+    border-top: 1px solid var(--border);
+}
+
+.finding .dot {
+    margin-top: .45rem;
+}
+
+.finding .tag {
+    font-size: .78rem;
+    font-weight: 700;
+    margin-bottom: .1rem;
+}
+
+.finding .body {
+    font-size: .92rem;
+    line-height: 1.5;
+}
+
+.up .dot {
+    background: var(--rain);
+}
+
+.down .dot {
+    background: var(--dry);
+}
+
+.neutral .dot {
+    background: var(--neutral);
+}
+
+.finding.up .tag {
+    color: var(--rain);
+}
+
+.finding.down .tag {
+    color: var(--dry);
+}
+
+.finding.neutral .tag {
+    color: var(--neutral);
+}
+
+.summary {
+    background: var(--soft);
+    border-radius: 12px;
+    padding: .85rem 1.1rem;
+    font-size: .92rem;
+    line-height: 1.5;
+    margin-top: .6rem;
+}
+
+/* tab */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 1.6rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.stTabs [data-baseweb="tab"] {
+    padding: .6rem 0;
+    font-weight: 700;
+    color: var(--muted);
+    background: transparent;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+    color: var(--text);
+}
+
+.stTabs [aria-selected="true"] {
+    color: var(--text);
+}
+
+.stTabs [data-baseweb="tab-highlight"] {
+    background: var(--accent);
+}
+
+.stTabs [data-baseweb="tab-border"] {
+    background: transparent;
+}
+
+/* tombol: teks selalu mengikuti warna tombol di semua keadaan */
+div.stButton button {
+    border-radius: 10px;
+    font-weight: 700;
+    padding: .5rem 1.1rem;
+    transition: background-color .22s ease, border-color .22s ease, color .22s ease,
+        box-shadow .22s ease, transform .15s ease;
+}
+
+div.stButton button p,
+div.stButton button span,
+div.stButton button div {
+    color: inherit !important;
+}
+
+/* tombol sekunder: normal, hover, fokus (setelah klik), ditekan */
+div.stButton button[kind="secondary"],
+div.stButton button[data-testid="stBaseButton-secondary"] {
+    background: var(--panel) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
+}
+
+div.stButton button[kind="secondary"]:hover,
+div.stButton button[data-testid="stBaseButton-secondary"]:hover {
+    background: var(--soft) !important;
+    color: var(--text) !important;
+    border-color: var(--accent) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+div.stButton button[kind="secondary"]:focus,
+div.stButton button[kind="secondary"]:focus-visible,
+div.stButton button[data-testid="stBaseButton-secondary"]:focus,
+div.stButton button[data-testid="stBaseButton-secondary"]:focus-visible {
+    background: var(--soft) !important;
+    color: var(--text) !important;
+    border-color: var(--accent) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent) !important;
+}
+
+div.stButton button[kind="secondary"]:active,
+div.stButton button[data-testid="stBaseButton-secondary"]:active {
+    background: var(--border) !important;
+    color: var(--text) !important;
+    border-color: var(--accent) !important;
+    transform: translateY(0) scale(.98);
+}
+
+/* tombol utama (menu aktif) */
+div.stButton button[kind="primary"],
+div.stButton button[data-testid="stBaseButton-primary"] {
+    background: var(--accent) !important;
+    color: var(--on-accent) !important;
+    border: 1px solid var(--accent) !important;
+}
+
+div.stButton button[kind="primary"]:hover,
+div.stButton button[data-testid="stBaseButton-primary"]:hover {
+    background: var(--accent-hover) !important;
+    color: var(--on-accent) !important;
+    border-color: var(--accent-hover) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+div.stButton button[kind="primary"]:focus,
+div.stButton button[kind="primary"]:focus-visible,
+div.stButton button[data-testid="stBaseButton-primary"]:focus,
+div.stButton button[data-testid="stBaseButton-primary"]:focus-visible {
+    background: var(--accent) !important;
+    color: var(--on-accent) !important;
+    border-color: var(--accent) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent) !important;
+}
+
+div.stButton button[kind="primary"]:active,
+div.stButton button[data-testid="stBaseButton-primary"]:active {
+    background: var(--accent-hover) !important;
+    color: var(--on-accent) !important;
+    transform: translateY(0) scale(.98);
+}
+
+/* form input: angka, tanggal, teks (terang dan gelap) */
+[data-testid="stWidgetLabel"],
+[data-testid="stWidgetLabel"] p,
+[data-testid="stWidgetLabel"] label {
+    color: var(--text) !important;
+    font-weight: 600;
+}
+
+[data-baseweb="input"] {
+    background: var(--input-bg) !important;
+    border: 1px solid var(--input-border) !important;
+    border-radius: 10px !important;
+    transition: background-color .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+
+[data-baseweb="input"] [data-baseweb="base-input"] {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+[data-baseweb="input"] input,
+[data-baseweb="base-input"] input {
+    color: var(--text) !important;
+    -webkit-text-fill-color: var(--text) !important;
+    background: transparent !important;
+    caret-color: var(--text);
+    opacity: 1 !important;
+    font-weight: 600;
+    min-width: 0;
+    padding: .5rem .7rem;
+    text-overflow: clip;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--text) !important;
+    box-shadow: 0 0 0 1000px var(--input-bg) inset !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--muted) !important;
+    -webkit-text-fill-color: var(--muted) !important;
+    opacity: .85;
+}
+
+[data-baseweb="input"]:hover {
+    border-color: color-mix(in srgb, var(--accent) 60%, var(--input-border)) !important;
+    background: var(--soft) !important;
+}
+
+[data-baseweb="input"]:focus-within {
+    border-color: var(--accent) !important;
+    background: var(--pop) !important;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 28%, transparent) !important;
+}
+
+[data-testid="stNumberInput"] button {
+    background: var(--soft);
+    color: var(--text);
+    border: none;
+}
+
+[data-testid="stNumberInput"] button * {
+    color: inherit !important;
+    fill: currentColor;
+}
+
+[data-testid="stNumberInput"] button:hover {
+    background: var(--border) !important;
+    color: var(--text) !important;
+}
+
+[data-testid="stNumberInput"] button:active {
+    background: var(--accent) !important;
+    color: var(--on-accent) !important;
+}
+
+/* kalender: header, pilihan bulan/tahun, dan hari terbaca di kedua mode */
+[data-baseweb="calendar"] {
+    background-color: var(--pop) !important;
+    border-radius: 12px;
+}
+
+[data-baseweb="calendar"] div {
+    background-color: transparent !important;
+    color: var(--text) !important;
+}
+
+[data-baseweb="calendar"] svg {
+    fill: var(--text) !important;
+}
+
+[data-baseweb="calendar"] button {
+    background-color: transparent !important;
+    color: var(--text) !important;
+}
+
+[data-baseweb="calendar"] button:hover {
+    background-color: var(--soft) !important;
+}
+
+[data-baseweb="calendar"] [aria-disabled="true"],
+[data-baseweb="calendar"] [aria-disabled="true"] div {
+    opacity: .35;
+}
+
+/* kotak pilihan bulan dan tahun */
+[data-baseweb="calendar"] [data-baseweb="select"] * {
+    color: var(--text) !important;
+    fill: var(--text) !important;
+}
+
+[data-baseweb="calendar"] [data-baseweb="select"]>div {
+    background-color: var(--soft) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 8px !important;
+}
+
+/* tanggal terpilih */
+[data-baseweb="calendar"] [aria-selected="true"],
+[data-baseweb="calendar"] [aria-selected="true"] div {
+    background-color: var(--accent) !important;
+    color: var(--on-accent) !important;
+    border-radius: 50%;
+}
+
+/* daftar dropdown bulan dan tahun */
+[data-baseweb="popover"] ul,
+[data-baseweb="menu"],
+[role="listbox"] {
+    background-color: var(--pop) !important;
+}
+
+[role="option"],
+[role="option"] * {
+    color: var(--text) !important;
+    background-color: transparent !important;
+}
+
+[role="option"]:hover,
+[role="option"][aria-selected="true"] {
+    background-color: var(--soft) !important;
+}
+
+/* slider dan pilihan lain */
+[data-testid="stSlider"] * {
+    color: var(--text);
+}
+
+[data-testid="stSlider"] [role="slider"] {
+    background-color: var(--accent) !important;
+}
+
+[data-testid="stSliderTickBarMin"],
+[data-testid="stSliderTickBarMax"] {
+    color: var(--muted);
+}
+
+/* kalender dan menu dropdown */
+[data-baseweb="popover"]>div,
+[data-baseweb="calendar"],
+[data-baseweb="calendar"]>div,
+[data-baseweb="menu"],
+[role="listbox"] {
+    background: var(--pop) !important;
+    color: var(--text);
+}
+
+[data-baseweb="calendar"] *,
+[role="option"] {
+    color: var(--text);
+}
+
+[data-baseweb="calendar"] [role="gridcell"],
+[data-baseweb="calendar"] [role="gridcell"]>div {
+    background-color: transparent;
+}
+
+[data-baseweb="calendar"] [aria-selected="true"],
+[data-baseweb="calendar"] [aria-selected="true"]>div {
+    background-color: var(--accent) !important;
+    color: var(--on-accent) !important;
+}
+
+/* expander dan peringatan */
+details {
+    background: var(--panel);
+    border-radius: 12px !important;
+    border-color: var(--border) !important;
+}
+
+details summary,
+details summary p,
+details summary span {
+    color: var(--text);
+    transition: background-color .22s ease;
+}
+
+details summary:hover {
+    background: var(--soft);
+    border-radius: 12px;
+}
+
+[data-testid="stAlert"] {
+    background: var(--soft);
+    color: var(--text);
+    border-radius: 12px;
+}
+
+[data-testid="stAlert"] p {
+    color: var(--text);
+}
+
+/* chatbot */
+[data-testid="stChatMessage"] {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+[data-testid="stChatInput"]>div {
+    background: transparent !important;
+    border: 1px solid var(--input-border);
+    border-radius: 14px;
+    transition: background-color .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+
+[data-testid="stChatInput"]>div:hover {
+    border-color: color-mix(in srgb, var(--accent) 60%, var(--input-border));
+    background: var(--soft);
+}
+
+[data-testid="stChatInput"]>div:focus-within {
+    border-color: var(--accent);
+    background: transparent !important;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+[data-testid="stChatInput"] textarea {
+    color: var(--text) !important;
+    -webkit-text-fill-color: var(--text) !important;
+    background: transparent !important;
+}
+
+[data-testid="stChatInput"]>div,
+[data-testid="stChatInput"]>div:hover,
+[data-testid="stChatInput"]>div:focus-within {
+    background: var(--chat-bg) !important;
+    border: 1px solid var(--chat-border) !important;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+[data-testid="stChatInput"]>div:hover {
+    border-color: color-mix(in srgb, var(--accent) 55%, var(--chat-border)) !important;
+}
+
+[data-testid="stChatInput"]>div:focus-within {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 28%, transparent) !important;
+}
+
+[data-testid="stChatInput"] [data-baseweb="textarea"],
+[data-testid="stChatInput"] [data-baseweb="base-input"],
+[data-testid="stChatInput"] textarea {
+    background: transparent !important;
+    color: var(--chat-text) !important;
+    -webkit-text-fill-color: var(--chat-text) !important;
+    caret-color: var(--chat-text);
+    opacity: 1 !important;
+}
+
+[data-testid="stChatInput"] textarea::placeholder {
+    color: var(--chat-placeholder) !important;
+    -webkit-text-fill-color: var(--chat-placeholder) !important;
+    opacity: 1 !important;
+}
+
+[data-testid="stChatInputSubmitButton"] {
+    background: transparent !important;
+    color: var(--accent) !important;
+}
+
+[data-testid="stChatInputSubmitButton"]:hover {
+    background: color-mix(in srgb, var(--accent) 18%, transparent) !important;
+}
+
+[data-testid="stChatInputSubmitButton"]:disabled {
+    color: var(--chat-placeholder) !important;
+    opacity: .5;
+}
+
+
+/* kurangi animasi jika diminta sistem */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
+
+/* kartu statistik: 4 kolom sama besar, tinggi seragam, font menyesuaikan lebar kartu */
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: stretch;
+    margin-bottom: .5rem;
+}
+
+.stat-card {
+    container-type: inline-size;
+    min-width: 0;
+    min-height: 7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .2rem;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1rem 1.2rem;
+    backdrop-filter: blur(8px);
+}
+
+.stat-label,
+.stat-value,
+.stat-sub {
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: clip;
+}
+
+.stat-label {
+    color: var(--muted);
+    font-weight: 600;
+    font-size: clamp(.7rem, .55rem + .6vw, .88rem);
+    line-height: 1.25;
+}
+
+.stat-value {
+    color: var(--text);
+    font-weight: 800;
+    font-size: clamp(1.05rem, 2.4vw, 1.8rem);
+    line-height: 1.15;
+}
+
+.stat-sub {
+    color: var(--muted);
+    font-size: clamp(.64rem, .5rem + .5vw, .82rem);
+    line-height: 1.25;
+}
+
+@supports (font-size: 1cqw) {
+    .stat-label {
+        font-size: clamp(.68rem, 7cqw, .88rem);
+    }
+
+    .stat-value {
+        font-size: clamp(1.05rem, 13cqw, 1.8rem);
+    }
+
+    .stat-sub {
+        font-size: clamp(.62rem, 6.5cqw, .82rem);
+    }
+}
+
+/* kartu metrik dashboard: tinggi seragam, teks tidak meluap */
+div[data-testid="stMetric"] {
+    min-height: 7rem;
+    overflow: visible;
+}
+
+div[data-testid="stMetricLabel"],
+div[data-testid="stMetricLabel"] *,
+div[data-testid="stMetricValue"],
+div[data-testid="stMetricValue"] *,
+div[data-testid="stMetricDelta"],
+div[data-testid="stMetricDelta"] * {
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: nowrap !important;
+}
+
+div[data-testid="stMetricValue"] {
+    line-height: 1.15;
+}
+
+/* button mode terang/gelap */
+[data-testid="stHorizontalBlock"]:has(.brand)> :last-child div.stButton,
+.st-key-theme_toggle {
+    display: flex;
+    justify-content: flex-end;
+}
+
+[data-testid="stHorizontalBlock"]:has(.brand)> :last-child div.stButton button,
+.st-key-theme_toggle button {
+    width: 2.8rem !important;
+    height: 2.8rem !important;
+    min-width: 2.8rem !important;
+    min-height: 2.8rem !important;
+    padding: 0 !important;
+    aspect-ratio: 1 / 1;
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    border-radius: 50% !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+[data-testid="stHorizontalBlock"]:has(.brand)> :last-child div.stButton button p,
+.st-key-theme_toggle button p {
+    font-size: 1.3rem;
+    line-height: 1;
+    margin: 0;
+}
+
+[data-testid="stHorizontalBlock"]:has(.brand)> :last-child div.stButton button:hover,
+.st-key-theme_toggle button:hover {
+    transform: rotate(14deg) scale(1.06);
+}
+
+
+/* judul aplikasi */
+.brand {
+    min-width: 0;
+    flex-wrap: nowrap;
+}
+
+.brand>div:last-child {
+    min-width: 0;
+}
+
+.brand-name,
+.brand-sub {
+    white-space: nowrap;
+}
+
+/* kartu statistik */
+.stat-card {
+    overflow: hidden;
+}
+
+.stat-label,
+.stat-value,
+.stat-sub {
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: clip;
+}
+
+/* tombol tema */
+[data-testid="stHorizontalBlock"]:has(.brand)> :last-child div.stButton {
+    display: flex;
+    justify-content: flex-end;
+}
+
+[data-testid="stHorizontalBlock"]:has(.brand)> :last-child div.stButton button {
+    width: 2.8rem !important;
+    height: 2.8rem !important;
+    min-width: 2.8rem !important;
+    min-height: 2.8rem !important;
+    padding: 0 !important;
+    aspect-ratio: 1 / 1;
+    box-sizing: border-box;
+    border-radius: 50% !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+[data-testid="stHorizontalBlock"]:has(.brand)> :last-child div.stButton button p {
+    font-size: 1.3rem !important;
+    line-height: 1;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* PC dan laptop */
+@media (min-width: 901px) {
+    html {
+        font-size: clamp(16px, 0.5vw + 10px, 24px) !important;
+    }
+
+    .block-container,
+    [data-testid="stMainBlockContainer"],
+    [data-testid="stAppViewBlockContainer"],
+    [data-testid="stBottomBlockContainer"] {
+        max-width: 100% !important;
+        padding-left: clamp(1.25rem, 2vw, 3rem) !important;
+        padding-right: clamp(1.25rem, 2vw, 3rem) !important;
+    }
+
+    .stat-grid {
+        gap: 1.25rem;
+    }
+
+    .stat-card {
+        min-height: 8rem;
+        padding: 1.2rem 1.5rem;
+    }
+
+    div[data-testid="stMetric"] {
+        padding: 1.2rem 1.5rem;
+    }
+
+    div.stButton button {
+        min-height: 2.9rem;
+    }
+}
+
+/* tablet dan HP */
+@media (max-width: 900px) {
+
+    /* navbar: baris 1 judul + tombol tema, baris 2 tiga menu sama lebar */
+    [data-testid="stHorizontalBlock"]:has(.brand) {
+        --gap: .6rem;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        column-gap: var(--gap) !important;
+        row-gap: 1.6rem !important;
+    }
+
+    [data-testid="stHorizontalBlock"]:has(.brand)>[data-testid="stColumn"],
+    [data-testid="stHorizontalBlock"]:has(.brand)>[data-testid="column"] {
+        order: 2;
+        width: auto !important;
+        min-width: 0 !important;
+        flex: 0 0 calc((100% - var(--gap) * 2) / 3) !important;
+        max-width: calc((100% - var(--gap) * 2) / 3) !important;
+    }
+
+    [data-testid="stHorizontalBlock"]:has(.brand)> :first-child {
+        order: 0;
+        flex: 1 1 calc(100% - 2.8rem - var(--gap) - 1px) !important;
+        max-width: calc(100% - 2.8rem - var(--gap) - 1px) !important;
+    }
+
+    [data-testid="stHorizontalBlock"]:has(.brand)> :last-child {
+        order: 1;
+        flex: 0 0 2.8rem !important;
+        width: 2.8rem !important;
+        max-width: 2.8rem !important;
+    }
+
+    /* tombol menu: tinggi sama, teks boleh dua baris di dalam tombol */
+    [data-testid="stHorizontalBlock"]:has(.brand)> :not(:last-child) div.stButton button {
+        width: 100% !important;
+        height: 3rem;
+        min-height: 3rem;
+        padding: .25rem .4rem !important;
+        font-size: clamp(.68rem, 3.1vw, .86rem);
+        line-height: 1.15;
+    }
+
+    [data-testid="stHorizontalBlock"]:has(.brand)> :not(:last-child) div.stButton button p {
+        white-space: normal !important;
+        text-wrap: balance;
+        text-align: center;
+        margin: 0;
+        font-size: inherit !important;
+        line-height: 1.15;
+    }
+
+    /* kartu statistik: 2 kolom, font mengikuti lebar kartu */
+    .stat-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: .7rem !important;
+    }
+
+    .stat-card {
+        min-height: 6rem;
+        padding: .8rem .9rem;
+    }
+
+    .stat-label {
+        font-size: clamp(.6rem, 2.9vw, .86rem);
+    }
+
+    .stat-value {
+        font-size: clamp(.95rem, 4.6vw, 1.5rem);
+    }
+
+    .stat-sub {
+        font-size: clamp(.56rem, 2.6vw, .8rem);
+    }
+
+    @supports (font-size: 1cqw) {
+        .stat-label {
+            font-size: clamp(.58rem, 8.6cqw, .88rem);
+        }
+
+        .stat-value {
+            font-size: clamp(.9rem, 13cqw, 1.6rem);
+        }
+
+        .stat-sub {
+            font-size: clamp(.54rem, 8cqw, .82rem);
+        }
+    }
+
+    /* kartu st.metric: 2 per baris, satu baris teks */
+    [data-testid="stHorizontalBlock"]:has([data-testid="stMetric"]) {
+        --gap: .7rem;
+        flex-wrap: wrap !important;
+        gap: var(--gap) !important;
+    }
+
+    [data-testid="stHorizontalBlock"]:has([data-testid="stMetric"])>[data-testid="stColumn"],
+    [data-testid="stHorizontalBlock"]:has([data-testid="stMetric"])>[data-testid="column"] {
+        flex: 1 1 calc((100% - var(--gap)) / 2) !important;
+        min-width: calc((100% - var(--gap)) / 2) !important;
+        width: auto !important;
+    }
+
+    div[data-testid="stMetric"] {
+        min-width: 0;
+        overflow: hidden;
+        padding: .8rem .9rem;
+    }
+
+    div[data-testid="stMetricLabel"] p {
+        font-size: clamp(.6rem, 2.9vw, .85rem);
+    }
+
+    div[data-testid="stMetricValue"] {
+        font-size: clamp(.95rem, 4.6vw, 1.4rem);
+    }
+
+    div[data-testid="stMetricDelta"] {
+        font-size: clamp(.56rem, 2.6vw, .78rem);
+    }
+}
+
+/* HP kecil */
+@media (max-width: 640px) {
+    .block-container {
+        padding: 1rem .9rem 2rem;
+    }
+
+    .brand-name {
+        font-size: clamp(.95rem, 4.4vw, 1.1rem);
+    }
+
+    .brand-sub {
+        font-size: clamp(.66rem, 3vw, .8rem);
+    }
+
+    .nav-line {
+        margin: 1.2rem 0 1.3rem;
+    }
+}
