@@ -110,7 +110,7 @@ def squash(text: str) -> str:
 
 def load_templates() -> dict[str, str]:
     text = read_asset(
-        "C:/Users/ASUS/.vscode/Dashboard dan Prediksi Cuaca Medan/assets/templates.html")
+        "assets/templates.html")
     blocks = {}
     for m in re.finditer(r"<!--\s*@(\w+)\s*-->(.*?)(?=<!--\s*@|\Z)", text, re.S):
         body = re.sub(r"<!--.*?-->", "", m.group(2), flags=re.S)
@@ -136,7 +136,7 @@ def inject_css() -> None:
     variables = ";".join(
         f"--{k.replace('_', '-')}:{v}" for k, v in theme.items())
     css = read_asset(
-        "C:/Users/ASUS/.vscode/Dashboard dan Prediksi Cuaca Medan/assets/style.css") + f"\n:root{{{variables}}}"
+        "assets/style.css") + f"\n:root{{{variables}}}"
     st.markdown(f"<style>{squash(css)}</style>", unsafe_allow_html=True)
 
 
