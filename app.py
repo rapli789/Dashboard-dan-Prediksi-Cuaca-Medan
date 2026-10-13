@@ -313,8 +313,8 @@ def get_context():
     recent = fetch_recent(92)  # batas maksimum Open-Meteo
     if recent is not None and not recent.empty:
         # sambung arsip yang tertinggal dengan data terbaru sampai hari ini
-        newer = recent[recent["date"] > hist["date"].max()]
-        hist = pd.concat([hist, newer], ignore_index=True)
+        newer = recent[~recent["date"].isin(hist["date"])]
+        hist = pd.concat([hist, newer], ignore_index=True).sort_values("date").reset_index(drop=True)
         recent = recent.tail(8).copy()
     else:
         recent = hist.tail(8).copy()
