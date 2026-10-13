@@ -109,8 +109,7 @@ def squash(text: str) -> str:
 
 
 def load_templates() -> dict[str, str]:
-    text = read_asset(
-        "assets/templates.html")
+    text = read_asset("assets/templates.html")
     blocks = {}
     for m in re.finditer(r"<!--\s*@(\w+)\s*-->(.*?)(?=<!--\s*@|\Z)", text, re.S):
         body = re.sub(r"<!--.*?-->", "", m.group(2), flags=re.S)
@@ -135,8 +134,7 @@ def inject_css() -> None:
              "color_scheme": "dark" if dark else "light"}
     variables = ";".join(
         f"--{k.replace('_', '-')}:{v}" for k, v in theme.items())
-    css = read_asset(
-        "assets/style.css") + f"\n:root{{{variables}}}"
+    css = read_asset("assets/style.css") + f"\n:root{{{variables}}}"
     st.markdown(f"<style>{squash(css)}</style>", unsafe_allow_html=True)
 
 
