@@ -34,7 +34,11 @@ MODEL_PATH = Path(
     "models/rain_prediction_rf.pkl")
 DATA_CANDIDATES = [
     Path("data/medan_weather_cleaned.csv")]
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
+GEMINI_MODELS = [m.strip() for m in os.getenv(
+    "GEMINI_MODELS",
+    "gemini-3.8-flash,gemini-3.7-flash,gemini-3.5-flash-lite,gemini-3.1-flash-lite",
+).split(",") if m.strip()]
+BUSY_CODES = ("503", "429", "500", "UNAVAILABLE", "RESOURCE_EXHAUSTED", "DEADLINE")
 LAT, LON = 3.5952, 98.6722  
 COLS = ["prcp", "tavg", "tmin", "tmax", "wspd", "pres"]
 HOT_C = 32.0  # batas suhu untuk label "panas" (derajat C)
@@ -742,6 +746,26 @@ def get_api_key() -> str | None:
         return None
 
 
+def generate_with_fallback(client, prompt: str) -> str:
+    # coba tiap model berurutan
+    last_error = None
+    for model_name in GEMINI_MODELS:
+        for attempt in range(2):
+            try:
+                return client.models.generate_content(
+                    model=model_name, contents=prompt).text
+            except Exception as e:
+                last_error = e
+                text = str(e)
+                if "404" in text or "NOT_FOUND" in text:
+                    break  # model tidak tersedia, langsung ke model berikutnya
+                if any(code in text for code in BUSY_CODES):
+                    time.sleep(1.5 * (attempt + 1))
+                    continue
+                raise  # error lain (misalnya kunci salah) tidak perlu diulang
+    raise last_error
+
+
 def page_chat() -> None:
     _, _, today, _ = get_context()
     GEMINI_API_KEY = get_api_key()
@@ -795,16 +819,16 @@ def page_chat() -> None:
                 try:
                     client = genai.Client(api_key=GEMINI_API_KEY)
                     prompt = f"{context_cuaca}\n\nPertanyaan User: {user_query}"
-                    response = client.models.generate_content(
-                        model="gemini-3.8-flash",
-                        contents=prompt,
-                    )
-                    bot_reply = response.text
+                    with st.spinner("Asisten sedang menyiapkan jawaban..."):
+                        bot_reply = generate_with_fallback(client, prompt)
                     st.markdown(bot_reply)
                     st.session_state.chat_history.append(
                         {"role": "assistant", "content": bot_reply})
                 except Exception as e:
-                    st.error(f"Gagal memproses respon AI: {e}")
+                    if any(code in str(e) for code in BUSY_CODES):
+                        st.error("Layanan AI sedang sibuk. Silakan coba lagi dalam beberapa saat.")
+                    else:
+                        st.error(f"Gagal memproses respon AI: {e}")
 
 
 # navigasi
